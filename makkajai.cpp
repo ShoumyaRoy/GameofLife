@@ -6,9 +6,9 @@ using namespace std;
 
 class GameOfLife {
     public:
-	 static const int DEAD    = 0x00;
+	 static const int _    = 0x00;
     public:
-	 static const int LIVE    = 0x01;
+	 static const int X    = 0x01;
 	
 	private:
 	 void printGrid(int grid[5][5]) {
@@ -29,7 +29,7 @@ class GameOfLife {
             
             for (int col = max(0, cell_col - 1) ; col < col_end ; col++) {
                 
-                if ((row != cell_row || col != cell_col) && grid[row][col] == LIVE) {
+                if ((row != cell_row || col != cell_col) && grid[row][col] == X) {
                     live_neighbours++;
                 }
             }
@@ -43,24 +43,24 @@ class GameOfLife {
         int new_state = current_state;
 
         switch (current_state) {
-        case LIVE:
+        case X:
 
             if (live_neighbours < 2) {
-                new_state = DEAD;
+                new_state = _;
             }
 
             if (live_neighbours == 2 || live_neighbours == 3) {
-                new_state = LIVE;
+                new_state = X;
             }
 
             if (live_neighbours > 3) {
-                new_state = DEAD;
+                new_state = _;
             }
             break;
 
-        case DEAD:
+        case _:
             if (live_neighbours == 3) {
-                new_state = LIVE;
+                new_state = X;
             }
             break;
 
@@ -85,26 +85,26 @@ class GameOfLife {
 	public:
 	 void test() {
 	 	int input;
-		int grid1[5][5] = {{DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {DEAD, LIVE, LIVE, DEAD, DEAD},
-                          {DEAD, LIVE, LIVE, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD}};
-        int grid2[5][5] = {{DEAD, LIVE, LIVE, DEAD, DEAD},
-                     	  {LIVE, DEAD, LIVE, DEAD, DEAD},
-                          {DEAD, LIVE, DEAD, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD}};
-        int grid3[5][5] = {{DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {LIVE, LIVE, LIVE, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD}};
-        int grid4[5][5] = {{DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {DEAD, LIVE, LIVE, LIVE, DEAD},
-                          {DEAD, DEAD, LIVE, LIVE, LIVE},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD},
-                          {DEAD, DEAD, DEAD, DEAD, DEAD}};
+		int grid1[5][5] = {{_, _, _, _, _},
+                          {_, X, X, _, _},
+                          {_, X, X, _, _},
+                          {_, _, _, _, _},
+                          {_, _, _, _, _}};
+        int grid2[5][5] = {{_, X, X, _, _},
+                     	  {X, _, X, _, _},
+                          {_, X, _, _, _},
+                          {_, _, _, _, _},
+                          {_, _, _, _, _}};
+        int grid3[5][5] = {{_, _, _, _, _},
+                          {X, X, X, _, _},
+                          {_, _, _, _, _},
+                          {_, _, _, _, _},
+                          {_, _, _, _, _}};
+        int grid4[5][5] = {{_, _, _, _, _},
+                          {_, X, X, X, _},
+                          {_, _, X, X, X},
+                          {_, _, _, _, _},
+                          {_, _, _, _, _}};
                           
         cout << "Game of Life" << endl << endl;
         cout << "Input Options:" << endl;
