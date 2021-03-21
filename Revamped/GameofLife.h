@@ -13,13 +13,13 @@ static const int X = 0x01;
 
 class GameOfLife {
 public:
-int GOLgrid[height][width];
+	int GOLgrid[height][width];
 
 public:
-GameOfLife(int matrix[height][width]);
-GameOfLife();
-int getLiveNeighbours(int cell_row, int cell_col);
-int getNewCellState(int current_state, int live_neighbours);
-void getNextGrid();
-void printGrid();
+	GameOfLife(int matrix[height][width]);
+	GameOfLife();
+	int getLiveNeighbours(int cell_row, int cell_col);
+	int getNewCellState(int current_state, int live_neighbours);
+	void getNextGrid();
+	void printGrid();
 };
